@@ -448,13 +448,8 @@ esp32_deployment/main.cpp
 
 # Author
 
-**Aditya K.**
+**Aditya Kumar.**
 
 Electronics and Communication Engineering (ECE)
 
-Interests:
 
-* TinyML
-* Embedded AI
-* Battery Health Monitoring
-* Edge Machine Learning
