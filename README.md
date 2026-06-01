@@ -1,8 +1,8 @@
-# TinyRUL-CNN: Battery Remaining Useful Life Prediction on ESP32
+# TinyRUL:An Edge AI Battery Prognostics Using TinyML and FreeRTOS on ESP32
 
 ## Overview
 
-TinyRUL-CNN is an end-to-end TinyML pipeline for predicting the Remaining Useful Life (RUL) of lithium-ion batteries using the Oxford Battery Degradation Dataset.
+TinyRUL is an Edge AI system that performs real-time battery Remaining Useful Life (RUL) estimation directly on an ESP32 microcontroller. The project combines battery degradation feature extraction, a lightweight CNN, TensorFlow Lite Micro deployment, and a FreeRTOS dual-core architecture to enable fully offline battery health monitoring at the edge.
 
 The project combines battery degradation feature engineering, deep learning, cross-validation, and embedded deployment to perform real-time battery health inference directly on an ESP32 microcontroller.
 
