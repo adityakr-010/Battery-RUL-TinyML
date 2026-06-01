@@ -450,4 +450,8 @@ esp32_deployment/main.cpp
 
 Electronics and Communication Engineering (ECE)
 
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 
