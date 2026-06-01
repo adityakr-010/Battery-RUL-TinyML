@@ -200,6 +200,28 @@ This ensures that the model is evaluated on entirely unseen battery cells.
 
 # LOOCV Results
 
+The model was evaluated using Leave-One-Cell-Out Cross Validation (LOOCV), where each battery cell was held out once as an unseen test battery.
+
+### Fold-wise Results
+
+| Test Cell | RMSE | MAE | R² |
+|------------|--------|--------|--------|
+| Cell2 | 5.10 | 4.20 | 0.921 |
+| Cell3 | 4.74 | 4.43 | 0.938 |
+| Cell5 | 2.59 | 2.29 | 0.938 |
+| Cell6 | 2.56 | 2.19 | 0.939 |
+| Cell8 | 7.04 | 5.24 | 0.863 |
+
+### Average Performance
+
+| Metric | Value |
+|----------|----------|
+| Average RMSE | **4.41 cycles** |
+| Average MAE | **3.67 cycles** |
+| Average R² | **0.920** |
+
+### RMSE Across Validation Folds
+
 ![LOOCV RMSE](images/Tiny_RMSE_Barplot.png)
 
 Detailed fold-by-fold results are available in:
@@ -208,7 +230,17 @@ Detailed fold-by-fold results are available in:
 LOOCV_Validation/TinyML_LOOCV_Results.csv
 ```
 
+### Key Observations
+
+- Achieved an average R² score of **0.92**, indicating strong predictive capability across unseen battery cells.
+- Average prediction error remained below **4.5 cycles RMSE**.
+- Performance remained consistent across multiple cells despite significant degradation variability.
+- Validation was performed on entirely unseen batteries, providing a realistic estimate of deployment performance.
+
 ---
+## Results Summary
+
+The final TinyRUL model achieved strong generalization performance across unseen battery cells, obtaining an average LOOCV RMSE of **4.41 cycles**, an average MAE of **3.67 cycles**, and an average R² score of **0.92**. The trained model was successfully deployed on an ESP32 using TensorFlow Lite Micro, achieving a real-time inference latency of approximately **15 ms** while occupying only **~19 KB** of flash memory.
 
 # Model Export Pipeline
 
