@@ -242,6 +242,7 @@ LOOCV_Validation/TinyML_LOOCV_Results.csv
 
 The final TinyRUL model achieved strong generalization performance across unseen battery cells, obtaining an average LOOCV RMSE of **4.41 cycles**, an average MAE of **3.67 cycles**, and an average R² score of **0.92**. The trained model was successfully deployed on an ESP32 using TensorFlow Lite Micro, achieving a real-time inference latency of approximately **15 ms** while occupying only **~19 KB** of flash memory.
 
+---
 # Model Export Pipeline
 
 The trained PyTorch model was exported through a multi-stage TinyML deployment pipeline:
