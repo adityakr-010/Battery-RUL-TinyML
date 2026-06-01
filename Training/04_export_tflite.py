@@ -37,7 +37,7 @@ class TinyRULCNN(nn.Module):
         x = self.regressor(x)
         return x.flatten()
 
-PTH_PATH = "FINAL_PRODUCTIONTINYML_last_last.pth"
+PTH_PATH = "RUL_TINYML.pth"
 
 ONNX_PATH = "tiny_rul.onnx"
 
@@ -50,11 +50,7 @@ TFLITE_PATH = os.path.join(
 
 HEADER_PATH = "model_finalVersion.h"
 
-
-# ==========================================================
 # LOAD MODEL
-# ==========================================================
-
 print("Loading checkpoint...")
 
 checkpoint = torch.load(
@@ -72,12 +68,7 @@ model.load_state_dict(
 )
 
 model.eval()
-
-
-# ==========================================================
 # EXPORT ONNX
-# ==========================================================
-
 print("Exporting ONNX...")
 
 dummy_input = torch.randn(
@@ -98,12 +89,7 @@ torch.onnx.export(
 
 print("ONNX saved.")
 
-
-# ==========================================================
 # ONNX -> TFLITE
-# ==========================================================
-
-print("Converting to TFLite...")
 
 subprocess.run(
     [
@@ -118,62 +104,25 @@ subprocess.run(
 
 print("TFLite generated.")
 
-
-# ==========================================================
-# FIND GENERATED TFLITE
-# ==========================================================
-
-generated_tflite = None
-
-for file in os.listdir(TF_DIR):
-    if file.endswith(".tflite"):
-        generated_tflite = os.path.join(
-            TF_DIR,
-            file
-        )
-        break
-
-if generated_tflite is None:
-    raise FileNotFoundError(
-        "No TFLite file generated."
-    )
-
-
-# ==========================================================
 # TFLITE -> HEADER
-# ==========================================================
 
-print("Generating model.h...")
-
-with open(generated_tflite, "rb") as f:
+with open(TFLITE_PATH, "rb") as f:
     model_data = f.read()
 
 with open(HEADER_PATH, "w") as f:
-
     f.write("#ifndef MODEL_H\n")
     f.write("#define MODEL_H\n\n")
-
-    f.write(
-        "const unsigned char model[] = {\n"
-    )
-
+    f.write("const unsigned char model[] = {\n")
+    
     for i, byte in enumerate(model_data):
-
         if i % 12 == 0:
             f.write("    ")
-
         f.write(f"0x{byte:02x},")
-
         if i % 12 == 11:
             f.write("\n")
-
+            
     f.write("\n};\n\n")
-
-    f.write(
-        f"const unsigned int model_len = {len(model_data)};\n\n"
-    )
-
+    f.write(f"const unsigned int model_len = {len(model_data)};\n\n")
     f.write("#endif\n")
 
-print("Done.")
 print(f"Header saved to: {HEADER_PATH}")
