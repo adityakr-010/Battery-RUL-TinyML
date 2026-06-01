@@ -310,7 +310,7 @@ TensorFlow Lite Micro
 
 The ESP32 serves a live battery-health dashboard showing telemetry and Remaining Useful Life predictions.
 
-![RUL Dashboard](dashboard.png)
+![RUL Dashboard](images/dashboard.png)
 
 ### Example Output
 
