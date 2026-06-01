@@ -1,4 +1,4 @@
-# TinyRUL:An Edge AI Battery Prognostics Using TinyML and FreeRTOS on ESP32
+# TinyRUL: An Edge AI Battery Prognostics Using TinyML and FreeRTOS on ESP32
 
 ## Overview
 
