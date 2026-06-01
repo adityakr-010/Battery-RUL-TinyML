@@ -266,7 +266,7 @@ The deployed model performs completely offline inference on-device without requi
 
 The ESP32 outputs battery health metrics and predicted Remaining Useful Life through a lightweight dashboard interface.
 
-![RUL Dashboard](dashboard.png)
+![RUL Dashboard](images/dashboard.png)
 
 ### Example Output
 
